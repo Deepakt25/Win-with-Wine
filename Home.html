@@ -14,7 +14,7 @@ document.getElementById("sourceLink").href=res.sourceUrl
 }
 });
 }
-function getrecepe(q){
+function getrecipe(q){
 $.ajax({
 url:"https://api.spoonacular.com/recipes/search?apiKey=dd03bb3bb9334c96afa0e917f5c47980&number=1&query="+q,
 success: function(res) {
