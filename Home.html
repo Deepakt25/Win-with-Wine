@@ -1,25 +1,28 @@
-<!DOCTYPE HTML>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<input id="search"><button onclick="getwinepairing(document.getElementById('search').value)">Search.</button>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+<input id="search" ><button onclick="getrecepe(document.getElementById('search').value)">Search</button>
 <div id="output"></div>
-<a href=""id="sourceLink"></a>
+<a href="" id="sourceLink"></a>
 <script>
-  function getsource(id){
-    $.ajax({
-      url:"https;//api.spponacular.com/food/wine/pairing./"{428278}"/information?apiKey=dd03bb3bb9334c96afa0e917f5c47980",
-      success:function(res){
-        document.getElementById("SourceLink").innerHTML=res.sourceUrl
-        document.getElementById("SourceLink").href=res.sourceUrl
-      }
-    });
-  }
-  function getwinepairing(q){
-    $.ajax({
-      url:"https://api.spoonacular.com/food/wine/pairing/search?apiKey=dd03bb3bb9334c96afa0e917f5c47980&number=1&q="+q'
-      success:function(res){
-      document.getElementById("output").innerHTML="<h1>"+res.results[0].title+</h1><br><img src='"+res.baseUrl+res.results[0].image+"'width='400'/><br> readyin "+res.results[0].readyInMinutes+" minutes"
-      getsource{res.results[0].id)
-               }
-    })
-  }
+
+function getsource(id){
+$.ajax({
+url:"https://api.spoonacular.com/recipes/"+id+"/information?apiKey=dd03bb3bb9334c96afa0e917f5c47980",
+success: function(res) {
+
+document.getElementById("sourceLink").innerHTML=res.sourceUrl
+document.getElementById("sourceLink").href=res.sourceUrl
+}
+});
+}
+function getrecepe(q){
+$.ajax({
+url:"https://api.spoonacular.com/recipes/search?apiKey=dd03bb3bb9334c96afa0e917f5c47980&number=1&query="+q,
+success: function(res) {
+
+document.getElementById("output").innerHTML="<h1>"+res.results[0].title+"</h1><br><img src='"+res.baseUri+res.results[0].image+"' width='400' /><br>Ready in "+res.results[0].readyInMinutes+" minutes"
+getsource(res.results[0].id)
+}
+});
+}
+
 </script>
